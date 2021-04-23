@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="wrapper">
+    
+    <form method='post' action="" class="form-signin">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="alert alert-{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <h2 class="form-signin-heading">Please login</h2>
+        <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus=""/>
+        <br>
+        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <br>
+        <a href="{% url 'signup' %}" class="btn btn-lg btn-success btn-block">Sign Up</a>
+        
+        
+    </form>
+        
+</div>
+
+{% endblock content %}
